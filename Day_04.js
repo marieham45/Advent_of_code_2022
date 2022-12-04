@@ -14,4 +14,18 @@ const findFullOverlap = (arr) => {
 
 }
 
+const findOverlap = (arr) => {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i][0][1] >= arr[i][1][0] && arr[i][1][1] >= arr[i][0][0] ) {
+            sum += 1;
+        }
+        
+    }
+            return sum
+
+}
+
 console.log(findFullOverlap(testArray));
+console.log(findOverlap(testArray));
+
