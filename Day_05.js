@@ -505,6 +505,7 @@ const procedure = testString.split("\n")
 
 const cargo = [["W", "M", "L", "F"], ["B", "Z", "V", "M", "F"], ["H", "V", "R", "S", "L", "Q"], ["F", "S", "V", "Q", "P", "M", "T", "J"], ["L", "S", "W"], ["F", "V", "P", "M", "R", "J", "W"], ["J", "Q", "C", "P", "N", "R", "F"], ["V", "H", "P", "S", "Z", "W", "R", "B"], ["B", "M", "J", "C", "G" , "H", "Z" , "W"]];
 
+/* PART ONE */
 const rearrange = (arr, plan) => {
        let lastItemsArray = []
         let finalString = "";
@@ -527,3 +528,32 @@ const rearrange = (arr, plan) => {
 }
 
 console.log(rearrange(cargo, procedure));
+
+/* PART TWO */
+
+const rearrangeWithNewCrane = (arr, plan) => {
+       let lastItemsArray = []
+    let finalString = ""
+
+    for (let i = 0; i < plan.length; i++) {
+        let movingPart = [];
+        for (let j = arr[plan[i][1] -1].length; j > arr[plan[i][1] -1].length - plan[i][0]; j--) {
+            movingPart.push(arr[[plan[i][1] -1]][j-1]);
+                    }
+        movingPart.reverse().forEach((part) => {
+                arr[plan[i][2] - 1].push(part);
+            })
+        arr[plan[i][1] -1] = arr[plan[i][1] -1].slice(0, arr[plan[i][1] -1].length - plan[i][0]);
+
+    }
+    arr.forEach((item) => lastItemsArray.push(item.pop()));
+    
+    lastItemsArray.forEach((letter) => {
+        finalString += letter;
+    })
+    return finalString;
+
+}
+
+console.log(rearrangeWithNewCrane(cargo, procedure));
+
