@@ -20,12 +20,11 @@ const input =
 [W] [B] [H] [F] [L] [F] [J] [V] [B]
  1   2   3   4   5   6   7   8   9 `
 
-const inputToArray = input.replace(/    /g, " ").replace(/[\[\]']+/g, "").split("\n").map(line => line.split(" ")).splice(0, 8);;
+const inputToArray = input.replace(/    /g, " ").replace(/[\[\]']+/g, "").split("\n").map(line => line.split(" ")).splice(0, 8);
 
 const transposeArray = (arr) => {
   let cargoArray = [];
   for (let i = 0; i < 9; i++) {
-    let stackArray = [];
     let stackArrayString = ""
     for (let j = 7; j > 0; j--) {
       stackArrayString += arr[j][i];
