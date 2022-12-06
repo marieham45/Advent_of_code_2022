@@ -4,23 +4,41 @@ const inputToArray = input.split("");
 
 const findMarker = (arr) => {
   let testArray = [];
-  testArray.push(arr[0])
-    testArray.push(arr[1])
-    testArray.push(arr[2])
-    testArray.push(arr[3])
+  for (let i = 0; i < 4; i++) {
+  testArray.push(arr[i])
+    
+  }
 
       for (let i = 4; i < arr.length; i++) {
 
-  if (testArray[0] === testArray[1] || testArray[0] === testArray[2] || testArray[0] === testArray[3] || testArray[1] === testArray[2] || testArray[1] === testArray[3] || testArray[2] === testArray[3]) {
+  if (testArray.some((val, index) => testArray.indexOf(val) !== index)) {
     testArray.shift();
     testArray.push(arr[i]);
   }
   }
-
       return testArray.join("")
+}
 
+const findMessage = (arr) => {
+  let testArray = [];
+  for (let i = 0; i < 14; i++) {
+  testArray.push(arr[i])
+    
+  }
+
+      for (let i = 14; i < arr.length; i++) {
+
+  if (testArray.some((val, index) => testArray.indexOf(val) !== index)) {
+    testArray.shift();
+    testArray.push(arr[i]);
+  }
+  }
+      return testArray.join("")
 }
 
 console.log(findMarker(inputToArray));
 console.log(input.indexOf(findMarker(inputToArray)) + 4);
+
+console.log(findMessage(inputToArray));
+console.log(input.indexOf(findMessage(inputToArray)) + 14);
 
