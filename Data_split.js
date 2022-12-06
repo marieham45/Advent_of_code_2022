@@ -28,7 +28,6 @@ const transposeArray = (arr) => {
     let stackArrayString = ""
     for (let j = 7; j > 0; j--) {
       stackArrayString += arr[j][i];
-      stackArrayString.trimEnd();
         }
     cargoArray.push(stackArrayString.split(""));
   }
