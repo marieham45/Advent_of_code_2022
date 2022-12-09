@@ -129,4 +129,80 @@ const findVis = (arr) => {
 
 }
 
+const scenicScoreCounter = (arr) => {
+  let arrayOfScenicScores = [];
+    for (let i = 1; i < arr.length - 1; i++) {
+        for (let j = 1; j < arr[i].length - 1; j++) {
+          let visToNorth = [];
+          let visToSouth = [];
+          for (let k = i; k < arr.length - 1; k++) {
+            visToSouth.push(arr[k+1][j])
+          }
+          for (let l = i; l > 0; l--) {
+            visToNorth.push(arr[l-1][j])
+          }
+          visToWest = arr[i].slice(0, j).reverse();
+          visToEast = arr[i].slice(j+1);
+
+          let visToNorthDistance = 0;
+          let visToEastDistance = 0;
+          let visToSouthDistance = 0;
+          let visToWestDistance = 0;
+
+          if (arr[i][j] > Math.max(...visToNorth)) {
+            visToNorthDistance = visToNorth.length
+          }
+
+          if (arr[i][j] <= Math.max(...visToNorth)) {
+            visToNorthDistance = 1;
+            for (let n = 0; arr[i][j] > visToNorth[n]; n++) {
+              visToNorthDistance += 1;}
+            
+          }
+
+          if (arr[i][j] > Math.max(...visToEast)) {
+            visToEastDistance = visToEast.length
+          }
+
+          if (arr[i][j] <= Math.max(...visToEast)) {
+            visToEastDistance = 1
+            for (let e = 0; arr[i][j] > visToEast[e]; e++) {
+              visToEastDistance += 1;}
+            
+                      }
+
+          if (arr[i][j] > Math.max(...visToSouth)) {
+            visToSouthDistance = visToSouth.length
+          }
+
+          if (arr[i][j] <= Math.max(...visToSouth)) {
+            visToSouthDistance = 1;
+            for (let s = 0; arr[i][j] > visToSouth[s]; s++) {
+              visToSouthDistance += 1;}
+            
+                      }
+          if (arr[i][j] > Math.max(...visToWest)) {
+            visToWestDistance = visToWest.length
+          }
+
+          if (arr[i][j] <= Math.max(...visToWest)) {
+            visToWestDistance = 1
+            for (let w = 0; arr[i][j] > visToWest[w]; w++) {
+              visToWestDistance += 1;}
+            
+                      }
+
+          let scenicScore = visToNorthDistance * visToEastDistance * visToSouthDistance * visToWestDistance
+          arrayOfScenicScores.push(scenicScore)
+
+        }
+
+    }
+
+  return Math.max(...arrayOfScenicScores);
+
+}
+
 console.log(findVis(gridToArray) + edge)
+console.log(scenicScoreCounter(gridToArray));
+
