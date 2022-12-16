@@ -1,10 +1,14 @@
-const summonPuzzleInput = async () => {
+import fs from "fs";
+
+/*const summonPuzzleInput = async () => {
   const response = await fetch("https://adventofcode.com/2022/day/1/input");
   const responseText = await response.text();
   return responseText;
 };
 
-const puzzleInput = await summonPuzzleInput();
+const puzzleInput = await summonPuzzleInput();*/
+
+const puzzleInput = fs.readFileSync("Data.txt", "utf8");
 
 const sampleInput = `1000
 2000
@@ -26,7 +30,7 @@ const sumReducer = (num, sum) => sum + num;
 const getSumOfGroup = (group) =>
   group.split("\n").map(Number).reduce(sumReducer, 0);
 
-const numberGroups = sampleInput.split("\n\n");
+const numberGroups = puzzleInput.split("\n\n");
 
 const groupSums = numberGroups.map(getSumOfGroup);
 
