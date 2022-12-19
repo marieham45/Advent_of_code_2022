@@ -1,4 +1,3 @@
-import { group } from "console";
 import fs from "fs";
 
 const puzzleInput = fs.readFileSync("Data.txt", "utf8");
