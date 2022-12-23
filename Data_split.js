@@ -23,5 +23,5 @@ const transpose = (arr) => {
 
 // OR
 
-const transposeOutput = array[0].map((_, colIndex) => array.map(row => row[colIndex]));
+const transposeWithMap = (arr) => arr[0].map((_, colIndex) => arr.map(row => row[colIndex]));
 
