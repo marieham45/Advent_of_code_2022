@@ -21,6 +21,7 @@ const transpose = (arr) => {
   return newArray
 }
 
-Array.prototype.transpose = function() {
-  return this[0].map((_, i) => this.map(row => row[i]));
-}
+// OR
+
+const transposeOutput = array[0].map((_, colIndex) => array.map(row => row[colIndex]));
+
