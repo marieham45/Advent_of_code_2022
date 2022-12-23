@@ -9,29 +9,18 @@ console.log(testString.split("\n")
 
 
 /********************************************************************/
-const input = 
-  `            [J]             [B] [W]
-            [T]     [W] [F] [R] [Z]
-        [Q] [M]     [J] [R] [W] [H]
-    [F] [L] [P]     [R] [N] [Z] [G]
-[F] [M] [S] [Q]     [M] [P] [S] [C]
-[L] [V] [R] [V] [W] [P] [C] [P] [J]
-[M] [Z] [V] [S] [S] [V] [Q] [H] [M]
-[W] [B] [H] [F] [L] [F] [J] [V] [B]
- 1   2   3   4   5   6   7   8   9 `
-
-const inputToArray = input.replace(/    /g, " ").replace(/[\[\]']+/g, "").split("\n").map(line => line.split(" ")).splice(0, 8);
-
-const transposeArray = (arr) => {
-  let cargoArray = [];
-  for (let i = 0; i < 9; i++) {
-    let stackArrayString = ""
-    for (let j = 7; j > 0; j--) {
-      stackArrayString += arr[j][i];
-        }
-    cargoArray.push(stackArrayString.split(""));
+const transpose = (arr) => {
+  let newArray = []
+  for (let i = 0; i < arr[0].length; i++) {
+    let itemArray = []
+    for (let j = 0; j < arr.length; j++) {
+      itemArray.push(arr[j][i])
+    }
+    newArray.push(itemArray);
   }
-  return cargoArray;
+  return newArray
 }
 
-console.log(transposeArray(inputToArray));
+Array.prototype.transpose = function() {
+  return this[0].map((_, i) => this.map(row => row[i]));
+}
